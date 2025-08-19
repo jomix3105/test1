@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hey tu me cherches pourquoi</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1:#0f172a;   /* slate-900 */
+      --bg-2:#1e293b;   /* slate-800 */
+      --accent:#60a5fa; /* blue-400 */
+      --accent-2:#a78bfa;/* violet-400 */
+      --text:#e2e8f0;   /* slate-200 */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+      color:var(--text);
+      background: radial-gradient(1200px 1200px at 10% 10%, rgba(96,165,250,.15), transparent 50%),
+                  radial-gradient(1000px 1000px at 90% 90%, rgba(167,139,250,.18), transparent 55%),
+                  linear-gradient(160deg,var(--bg-1),var(--bg-2));
+      display:grid;
+      place-items:center;
+    }
+    .card{
+      position:relative;
+      width:min(920px,92vw);
+      padding:clamp(20px,6vw,64px);
+      border-radius:28px;
+      background:rgba(15,23,42,.45);
+      backdrop-filter:saturate(140%) blur(12px);
+      box-shadow:0 20px 60px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);
+      overflow:hidden;
+      animation:fadeUp .8s ease both;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      border-radius:30px;
+      padding:2px; 
+      background:conic-gradient(from 180deg at 50% 50%, var(--accent), var(--accent-2), var(--accent));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      pointer-events:none;
+      filter:blur(.5px);
+      opacity:.85;
+    }
+    h1{
+      margin:0 0 .25em 0;
+      font-weight:700;
+      font-size:clamp(28px,6vw,64px);
+      letter-spacing:.5px;
+      line-height:1.05;
+      text-wrap:balance;
+    }
+    p.sub{
+      margin:0;
+      font-weight:300;
+      font-size:clamp(14px,2.6vw,18px);
+      opacity:.85;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.5rem .9rem;
+      border-radius:999px;
+      background:rgba(2,6,23,.65);
+      border:1px solid rgba(148,163,184,.22);
+      font-size:.9rem;
+      margin-bottom:1rem;
+    }
+    .spark{
+      width:.65rem; height:.65rem; border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, #fff 0 30%, transparent 31% 100%), var(--accent);
+      box-shadow:0 0 14px var(--accent);
+      animation:pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse{50%{box-shadow:0 0 26px var(--accent)}}
+    @keyframes fadeUp{from{opacity:0; transform:translateY(12px)}to{opacity:1; transform:translateY(0)}}
+    .footer{
+      margin-top:1.5rem; display:flex; gap:.6rem; flex-wrap:wrap; opacity:.75;
+      font-size:.9rem;
+    }
+    .btn{
+      display:inline-block;
+      margin-top:1.25rem;
+      padding:.9rem 1.1rem;
+      border-radius:14px;
+      color:#0b1220; background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      text-decoration:none; font-weight:600; box-shadow:0 8px 24px rgba(96,165,250,.35);
+      transition:transform .15s ease, box-shadow .2s ease;
+    }
+    .btn:hover{transform:translateY(-2px); box-shadow:0 16px 28px rgba(96,165,250,.45)}
+    @media (prefers-reduced-motion: reduce){
+      .card{animation:none}
+      .spark{animation:none}
+    }
+    /* Print-friendly */
+    @media print{
+      body{background:#fff;}
+      .card{box-shadow:none; background:#fff; border:2px solid #ddd}
+      .card::before{display:none}
+      .btn,.footer{display:none}
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-label="Message principal">
+    <div class="badge"><span class="spark" aria-hidden="true"></span> Message</div>
+    <h1>Hey tu me cherches pourquoi</h1>
+    <p class="sub">Scanne, souris, et passe une bonne journée ✨</p>
+    <a class="btn" href="#" onclick="window.print(); return false;" aria-label="Imprimer cette page">Imprimer cette page</a>
+    <div class="footer">Astuce : Ajoute cette page comme lien de ton QR code pour un rendu propre sur mobile et desktop.</div>
+  </main>
+</body>
+</html>
